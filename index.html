@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Détour — Politique de confidentialité</title>
+<meta name="description" content="Politique de confidentialité de l'application Android Détour. Privacy policy for the Détour Android app.">
+<meta name="theme-color" content="#FAF7F0">
+<style>
+  /* Polices de l'app, servies localement (aucune requête vers un tiers). */
+  @font-face {
+    font-family: "Fraunces";
+    src: url("fonts/fraunces.ttf") format("truetype");
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Manrope";
+    src: url("fonts/manrope.ttf") format("truetype");
+    font-weight: 200 800;
+    font-display: swap;
+  }
+
+  /* Palette de ui/theme/Theme.kt. L'app n'a qu'un thème clair : la page aussi. */
+  :root {
+    --sky-top: #FAF7F0;   /* fond papier */
+    --ink: #26221A;       /* texte principal */
+    --mist: #67604F;      /* texte secondaire */
+    --paper: #FFFFFF;     /* cartes, tuiles */
+    --tile-edge: #E2DACB; /* tranche des tuiles */
+    --gold: #E3A93B;      /* or — action */
+    --gold-edge: #C48E26;
+    --gold-ink: #241A05;
+    --gold-tint: #F6E3BC; /* lettre changée */
+    --amber: #8F680C;     /* or sombre — liens, libellés */
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--sky-top);
+    color: var(--ink);
+    font: 500 16px/1.6 "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Wallpaper() : la chambre, sous un voile papier à 25 %. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(250, 247, 240, .25), rgba(250, 247, 240, .25)),
+      url("wallpaper.jpg") center / cover no-repeat,
+      var(--sky-top);
+  }
+
+  .wrap { max-width: 40rem; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+
+  /* Raised() : une face posée sur sa tranche. */
+  .raised {
+    background: var(--paper);
+    border-radius: 22px;
+    box-shadow: 0 4px 0 var(--tile-edge);
+  }
+
+  /* En-tête : le nom en tuiles lettres. */
+  header { text-align: center; margin-bottom: 1.75rem; }
+  .tiles {
+    display: flex; justify-content: center; gap: 8px;
+    margin: 0 0 1.5rem; padding: 0; list-style: none;
+  }
+  .tile {
+    width: 46px; height: 52px;
+    display: grid; place-items: center;
+    background: var(--paper);
+    border-radius: 10px;
+    box-shadow: 0 3px 0 var(--tile-edge);
+    font: 800 25px/1 "Fraunces", Georgia, serif;
+    color: var(--ink);
+  }
+  .tile.changed { background: var(--gold-tint); box-shadow: none; color: var(--amber); }
+
+  /* Choix de langue : pastille dorée sur la langue active. */
+  .lang {
+    display: inline-flex; gap: 6px; padding: 6px 6px 10px;
+  }
+  .lang button {
+    appearance: none; border: 0; cursor: pointer;
+    min-width: 7.5rem; padding: .55rem 1.1rem;
+    border-radius: 14px;
+    background: transparent;
+    color: var(--mist);
+    font: 700 14px/1.2 "Manrope", system-ui, sans-serif;
+    letter-spacing: .2px;
+    transition: transform 80ms ease;
+  }
+  .lang button[aria-pressed="true"] {
+    background: var(--gold);
+    color: var(--gold-ink);
+    box-shadow: 0 4px 0 var(--gold-edge);
+  }
+  .lang button:active { transform: translateY(3px); }
+  .lang button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .no-js .lang { display: none; }
+
+  /* Une seule langue visible à la fois. */
+  .js article:not(.active) { display: none; }
+
+  article { padding: 1.75rem 1.4rem 1.5rem; margin-bottom: 1.5rem; }
+  h1 {
+    font: 600 26px/32px "Fraunces", Georgia, serif;
+    letter-spacing: -.3px;
+    margin: 0 0 .35rem;
+  }
+  .updated {
+    margin: 0 0 1.25rem;
+    color: var(--mist);
+    font: 700 12px/16px "Manrope", system-ui, sans-serif;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+  h2 {
+    font: 600 19px/24px "Fraunces", Georgia, serif;
+    margin: 1.75rem 0 .5rem;
+  }
+  p { margin: .5rem 0; }
+  article ul { list-style: none; padding: 0; margin: .5rem 0; }
+  article li { position: relative; padding-left: 1.25rem; margin: .3rem 0; }
+  article li::before {
+    content: ""; position: absolute; left: .2rem; top: .62em;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold);
+  }
+  a { color: var(--amber); font-weight: 700; text-underline-offset: 2px; }
+  strong { font-weight: 700; }
+
+  footer {
+    text-align: center;
+    color: var(--ink);
+    font: 700 12px/16px "Manrope", system-ui, sans-serif;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px var(--sky-top), 0 0 12px var(--sky-top); /* HaloText */
+  }
+
+  @media (max-width: 380px) {
+    .tile { width: 40px; height: 46px; font-size: 22px; }
+    .lang button { min-width: 6.5rem; }
+  }
+</style>
+<script>document.documentElement.className = "js";</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <ul class="tiles" aria-label="Détour">
+      <li class="tile" aria-hidden="true">D</li>
+      <li class="tile" aria-hidden="true">É</li>
+      <li class="tile changed" aria-hidden="true">T</li>
+      <li class="tile" aria-hidden="true">O</li>
+      <li class="tile" aria-hidden="true">U</li>
+      <li class="tile" aria-hidden="true">R</li>
+    </ul>
+    <div class="lang raised" role="group" aria-label="Langue / Language">
+      <button type="button" data-lang="fr" aria-pressed="true">Français</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <main>
+    <article id="fr" lang="fr" class="raised active">
+      <h1>Politique de confidentialité</h1>
+      <p class="updated">Mise à jour le 16 novembre 2026</p>
+      <p>Détour est un jeu d'échelles de mots qui fonctionne entièrement sur votre appareil. Cette page explique quelles données l'application utilise, pourquoi, et ce que vous pouvez en faire.</p>
+
+      <h2>Qui sommes-nous</h2>
+      <p>Détour est édité par Freshnel Houenou, développeur indépendant. Pour toute question sur vos données : <a href="mailto:hfreshnel@gmail.com">hfreshnel@gmail.com</a>.</p>
+
+      <h2>Données enregistrées sur votre appareil</h2>
+      <ul>
+        <li>Le pseudo que vous choisissez</li>
+        <li>Votre progression (XP, niveau, séries, succès, puzzles résolus)</li>
+        <li>Vos meilleurs scores locaux</li>
+        <li>Vos préférences de langue, de son et de vibration</li>
+      </ul>
+      <p>Ces données servent uniquement à faire fonctionner le jeu. Elles restent dans l'espace privé de l'application sur votre téléphone, inaccessible aux autres applications. Elles ne sont envoyées à aucun serveur : Détour n'a pas de serveur de jeu, et nous n'y avons jamais accès.</p>
+
+      <h2>Ce que nous ne faisons pas</h2>
+      <ul>
+        <li>Aucun compte à créer</li>
+        <li>Aucune publicité</li>
+        <li>Aucun outil d'analyse ni de suivi intégré par nous</li>
+        <li>Aucune vente ni partage de données avec des tiers</li>
+        <li>Aucune décision automatisée ni profilage</li>
+      </ul>
+
+      <h2>Multijoueur à proximité</h2>
+      <p>Quand vous créez ou rejoignez une course, Détour utilise <strong>Nearby Connections</strong> des services Google Play. Ce service peut passer par le Bluetooth, le Wi‑Fi Direct ou votre réseau local.</p>
+      <ul>
+        <li>Pendant la recherche d'une partie, votre pseudo est visible par les appareils proches qui cherchent aussi une course Détour.</li>
+        <li>Pendant la course, seuls des messages de jeu (pseudo, numéro du puzzle, progression) sont échangés, directement et de façon chiffrée, entre les deux téléphones.</li>
+        <li>Le pseudo de votre adversaire n'est pas conservé après la partie.</li>
+      </ul>
+      <p>Google indique que son SDK Nearby collecte des statistiques d'utilisation pour améliorer le service : modèle de l'appareil, pays, version d'Android, nom de l'application et mesures de performance de la connexion. Cette collecte relève de Google et de ses <a href="https://policies.google.com/privacy?hl=fr" rel="noopener">règles de confidentialité</a>. Vous pouvez la désactiver dans Paramètres › Google › Utilisation et diagnostic.</p>
+      <p>Nous ne collectons pas votre position.</p>
+
+      <h2>Autorisations</h2>
+      <p>Les autorisations Bluetooth, Appareils à proximité et, sur Android 12 ou version antérieure, Localisation sont demandées uniquement quand vous ouvrez le mode course, pour que Nearby Connections puisse trouver un ami à proximité. Elles ne servent ni à la publicité ni au suivi. Vous pouvez les refuser : le reste du jeu fonctionne sans elles.</p>
+
+      <h2>Conservation et suppression</h2>
+      <p>Vos données restent sur votre téléphone tant que l'application est installée. Désinstaller Détour, ou effacer ses données dans les paramètres Android, les supprime définitivement. Nous n'en gardons aucune copie.</p>
+
+      <h2>Vos droits</h2>
+      <p>Comme vos données ne quittent pas votre appareil, vous les contrôlez directement : vous pouvez changer votre pseudo dans votre profil et tout effacer à tout moment comme indiqué ci‑dessus. Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité prévus par le RGPD. Pour toute question, écrivez‑nous à <a href="mailto:hfreshnel@gmail.com">hfreshnel@gmail.com</a>. Vous pouvez aussi adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.</p>
+
+      <h2>Enfants</h2>
+      <p>Détour ne s'adresse pas spécifiquement aux enfants de moins de 13 ans et ne collecte aucune donnée personnelle, y compris auprès d'enfants.</p>
+
+      <h2>Modifications</h2>
+      <p>Si cette politique change, la nouvelle version sera publiée sur cette page avec une nouvelle date de mise à jour.</p>
+    </article>
+
+    <article id="en" lang="en" class="raised">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Updated 16 November 2026</p>
+      <p>Détour is a word-ladder game that runs entirely on your device. This page explains what data the app uses, why, and what you can do about it.</p>
+
+      <h2>Who we are</h2>
+      <p>Détour is published by Freshnel Houenou, an independent developer. For any question about your data: <a href="mailto:hfreshnel@gmail.com">hfreshnel@gmail.com</a>.</p>
+
+      <h2>Data stored on your device</h2>
+      <ul>
+        <li>The display name you choose</li>
+        <li>Your progress (XP, level, streaks, achievements, solved puzzles)</li>
+        <li>Your local high scores</li>
+        <li>Your language, sound and vibration preferences</li>
+      </ul>
+      <p>This data is used only to run the game. It stays in the app's private storage on your phone, which other apps cannot read. It is not sent to any server: Détour has no game server, and we never have access to it.</p>
+
+      <h2>What we don't do</h2>
+      <ul>
+        <li>No account to create</li>
+        <li>No ads</li>
+        <li>No analytics or tracking tools added by us</li>
+        <li>No selling or sharing of data with third parties</li>
+        <li>No automated decision-making or profiling</li>
+      </ul>
+
+      <h2>Nearby multiplayer</h2>
+      <p>When you host or join a race, Détour uses Google Play services <strong>Nearby Connections</strong>. It may use Bluetooth, Wi‑Fi Direct, or your local network.</p>
+      <ul>
+        <li>While looking for a match, your display name is visible to nearby devices that are also looking for a Détour race.</li>
+        <li>During the race, only game messages (display name, puzzle id, progress) are exchanged, directly and encrypted, between the two phones.</li>
+        <li>Your opponent's display name is not kept after the match.</li>
+      </ul>
+      <p>Google states that its Nearby SDK collects usage analytics to improve the service: device model, country, Android version, app package name and connection performance metrics. This collection is handled by Google under its <a href="https://policies.google.com/privacy?hl=en" rel="noopener">Privacy Policy</a>. You can turn it off in Settings › Google › Usage &amp; diagnostics.</p>
+      <p>We do not collect your location.</p>
+
+      <h2>Permissions</h2>
+      <p>Bluetooth, Nearby devices and, on Android 12 or earlier, Location permissions are requested only when you open race mode, so Nearby Connections can find a friend nearby. They are not used for ads or tracking. You can deny them: the rest of the game works without them.</p>
+
+      <h2>Retention and deletion</h2>
+      <p>Your data stays on your phone as long as the app is installed. Uninstalling Détour, or clearing its data in Android settings, deletes it permanently. We keep no copy.</p>
+
+      <h2>Your rights</h2>
+      <p>Because your data never leaves your device, you control it directly: you can change your display name in your profile and erase everything at any time as described above. You have the rights of access, rectification, erasure, restriction, objection and portability under the GDPR. For any question, email us at <a href="mailto:hfreshnel@gmail.com">hfreshnel@gmail.com</a>. You may also lodge a complaint with your data protection authority (in France, the <a href="https://www.cnil.fr/en/home" rel="noopener">CNIL</a>).</p>
+
+      <h2>Children</h2>
+      <p>Détour is not specifically directed at children under 13 and does not collect personal data from anyone, including children.</p>
+
+      <h2>Changes</h2>
+      <p>If this policy changes, the new version will be posted on this page with a new update date.</p>
+    </article>
+  </main>
+
+  <footer>Détour · Android</footer>
+</div>
+
+<script>
+(function () {
+  var titles = { fr: "Détour — Politique de confidentialité", en: "Détour — Privacy Policy" };
+  var buttons = document.querySelectorAll(".lang button");
+
+  function show(lang, updateUrl) {
+    document.querySelectorAll("article").forEach(function (a) {
+      a.classList.toggle("active", a.id === lang);
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    document.documentElement.lang = lang;
+    document.title = titles[lang];
+    if (updateUrl) history.replaceState(null, "", "#" + lang);
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { show(b.dataset.lang, true); });
+  });
+
+  // Ordre de choix : #fr / #en dans l'URL, sinon la langue du navigateur, sinon le français.
+  var hash = location.hash.slice(1);
+  var nav = (navigator.language || "fr").toLowerCase();
+  show(hash === "en" || hash === "fr" ? hash : (nav.indexOf("fr") === 0 ? "fr" : "en"), false);
+})();
+</script>
+</body>
+</html>
